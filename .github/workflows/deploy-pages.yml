@@ -33,6 +33,9 @@ jobs:
       - name: Build production site
         run: npm run build
 
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
       - name: Prepare Pages artifact
         run: touch dist/personal-portfolio/browser/.nojekyll
 
