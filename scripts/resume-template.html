@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gilang Prakoso - Resume</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+    @page {
+      size: A4;
+      margin: 12mm 15mm 12mm 15mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #1e293b;
+      background-color: #ffffff;
+      line-height: 1.45;
+      font-size: 9.5pt;
+      -webkit-font-smoothing: antialiased;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    a {
+      color: #4338ca;
+      text-decoration: none;
+    }
+
+    /* HEADER */
+    .header {
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 14px;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .header-main {
+      max-width: 60%;
+    }
+
+    .name {
+      font-size: 24pt;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+
+    .title-badge {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 11pt;
+      font-weight: 600;
+      color: #4f46e5;
+      letter-spacing: 0.2px;
+    }
+
+    .header-contact {
+      text-align: right;
+      font-size: 8.5pt;
+      color: #475569;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 6px;
+    }
+
+    .contact-item svg {
+      width: 13px;
+      height: 13px;
+      color: #6366f1;
+      flex-shrink: 0;
+    }
+
+    /* SECTION STYLES */
+    .section {
+      margin-bottom: 16px;
+      break-inside: avoid;
+    }
+
+    .section-title {
+      font-size: 10.5pt;
+      font-weight: 700;
+      color: #0f172a;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      border-bottom: 1.5px solid #cbd5e1;
+      padding-bottom: 4px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title svg {
+      width: 15px;
+      height: 15px;
+      color: #4f46e5;
+    }
+
+    /* SUMMARY */
+    .summary-text {
+      color: #334155;
+      text-align: justify;
+      font-size: 9.2pt;
+      line-height: 1.5;
+    }
+
+    /* SKILLS GRID */
+    .skills-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 16px;
+    }
+
+    .skill-group {
+      font-size: 8.8pt;
+      line-height: 1.4;
+    }
+
+    .skill-group-title {
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 2px;
+    }
+
+    .skill-tags {
+      color: #475569;
+    }
+
+    /* EXPERIENCE & PROJECTS */
+    .timeline-item {
+      margin-bottom: 13px;
+      break-inside: avoid;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 3px;
+    }
+
+    .item-title {
+      font-size: 10.5pt;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .item-subtitle {
+      font-size: 9.5pt;
+      font-weight: 600;
+      color: #4338ca;
+    }
+
+    .item-date {
+      font-size: 8.5pt;
+      font-weight: 500;
+      color: #64748b;
+      white-space: nowrap;
+    }
+
+    .item-location {
+      font-size: 8.5pt;
+      font-style: italic;
+      color: #64748b;
+    }
+
+    .bullet-list {
+      list-style-type: none;
+      margin-top: 4px;
+      padding-left: 0;
+    }
+
+    .bullet-list li {
+      position: relative;
+      padding-left: 14px;
+      margin-bottom: 3.5px;
+      color: #334155;
+      font-size: 9pt;
+      line-height: 1.42;
+      text-align: justify;
+    }
+
+    .bullet-list li::before {
+      content: '▪';
+      position: absolute;
+      left: 0;
+      top: -0.5px;
+      color: #6366f1;
+      font-size: 9pt;
+    }
+
+    /* PROJECT CARDS */
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .project-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 10px;
+      background-color: #f8fafc;
+      break-inside: avoid;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-card.featured {
+      border-left: 3px solid #4f46e5;
+    }
+
+    .project-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 4px;
+    }
+
+    .project-title {
+      font-size: 9.8pt;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .project-category {
+      font-size: 7.5pt;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #4f46e5;
+      background: #e0e7ff;
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+
+    .project-desc {
+      font-size: 8.6pt;
+      color: #475569;
+      line-height: 1.38;
+      margin-bottom: 6px;
+    }
+
+    .tech-pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: auto;
+    }
+
+    .tech-pill {
+      font-size: 7.5pt;
+      font-weight: 500;
+      color: #334155;
+      background-color: #ffffff;
+      border: 1px solid #cbd5e1;
+      padding: 1px 5px;
+      border-radius: 3px;
+    }
+
+    /* TWO COLUMNS SECTION */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 16px;
+    }
+
+    .page-break {
+      page-break-before: always;
+      break-before: page;
+    }
+
+    .page-break-header {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 8px;
+      margin-bottom: 14px;
+      font-size: 8.5pt;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-main">
+      <h1 class="name">Gilang Prakoso</h1>
+      <div class="title-badge">Front-End Developer &bull; 5+ Years Experience</div>
+    </div>
+    <div class="header-contact">
+      <div class="contact-item">
+        <span>+62 822-2716-9192</span>
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+      </div>
+      <div class="contact-item">
+        <a href="mailto:gilangprakoso37@gmail.com">gilangprakoso37@gmail.com</a>
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      </div>
+      <div class="contact-item">
+        <span>Semarang / Pati, Indonesia</span>
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+      </div>
+      <div class="contact-item">
+        <a href="https://linkedin.com/" target="_blank">linkedin.com/in/gilang-prakoso</a>
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76c.96 0 1.74-.78 1.74-1.74a1.74 1.74 0 0 0-1.74-1.74 1.74 1.74 0 0 0-1.74 1.74c0 .96.78 1.74 1.74 1.74m1.39 9.94v-8.37H5.07v8.37h2.78z"/></svg>
+      </div>
+      <div class="contact-item">
+        <a href="https://github.com/" target="_blank">github.com/gilang-prakoso</a>
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+      </div>
+    </div>
+  </header>
+
+  <!-- PROFESSIONAL SUMMARY -->
+  <section class="section">
+    <h2 class="section-title">
+      <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+      Professional Summary
+    </h2>
+    <p class="summary-text">
+      Passionate Front-End Developer with over 5 years of experience in designing, building, and optimizing modern web and cross-platform mobile applications using <strong>JavaScript, TypeScript, Angular, React, and Next.js</strong>. Proven track record in transforming complex UI/UX designs into responsive, accessible, high-performance web systems. Expertise in architecting enterprise CRM platforms utilizing <strong>Modular Architecture, Micro-frontends (Nx & Module Federation)</strong>, and real-time offline-first mobile synchronization with <strong>Firebase</strong> and <strong>Couchbase</strong>. Dedicated to engineering excellence, maintainable code, cross-browser compatibility, and collaborative team success.
+    </p>
+  </section>
+
+  <!-- TECHNICAL SKILLS -->
+  <section class="section">
+    <h2 class="section-title">
+      <svg fill="currentColor" viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
+      Technical Skills
+    </h2>
+    <div class="skills-container">
+      <div class="skill-group">
+        <div class="skill-group-title">Languages & Core Web:</div>
+        <div class="skill-tags">JavaScript (ES6+), TypeScript, HTML5, CSS3/SCSS, PHP, Node.js</div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Frameworks & Libraries:</div>
+        <div class="skill-tags">Angular (17-19), React.js, Next.js, NativeScript, RxJS, Tailwind CSS, Bootstrap, Material UI</div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Architecture & Patterns:</div>
+        <div class="skill-tags">Modular Architecture, Micro-frontends (Module Federation), Nx Monorepo, RESTful APIs, Component-Driven UI</div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Tools, Cloud & DB:</div>
+        <div class="skill-tags">Git & GitHub, VS Code, Chrome DevTools, Vite, Figma, Firebase, Couchbase, Postman</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK EXPERIENCE -->
+  <section class="section">
+    <h2 class="section-title">
+      <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
+      Work Experience
+    </h2>
+
+    <div class="timeline-item">
+      <div class="item-header">
+        <div>
+          <span class="item-title">Front-End Developer</span>
+          <span class="item-subtitle"> &bull; E-Solution</span>
+        </div>
+        <div class="item-date">Previous &bull; Semarang, Indonesia</div>
+      </div>
+      <ul class="bullet-list">
+        <li>Spearheaded front-end development and maintenance for high-impact web and mobile applications using <strong>Angular, Next.js, NativeScript, and TypeScript</strong>.</li>
+        <li>Architected scalable modular frontend architectures and micro-frontends with <strong>Nx Monorepo</strong> and <strong>Webpack Module Federation</strong>, enabling decoupled deployments for enterprise CRM solutions.</li>
+        <li>Partnered closely with UI/UX designers and back-end engineers to ensure flawless RESTful API integration, optimal system latency, and seamless offline data synchronization with <strong>Firebase & Couchbase</strong>.</li>
+        <li>Standardized modern engineering workflows: reusable component libraries, atomic CSS with Tailwind, rigorous type safety, and Git pull-request workflows.</li>
+        <li>Conducted proactive code reviews, browser performance auditing, and multi-device debugging to achieve high responsiveness and cross-browser reliability.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item" style="margin-top: 10px;">
+      <div class="item-header">
+        <div>
+          <span class="item-title">Front-End Developer Intern</span>
+          <span class="item-subtitle"> &bull; Landa System</span>
+        </div>
+        <div class="item-date">Malang, Indonesia</div>
+      </div>
+      <ul class="bullet-list">
+        <li>Developed responsive and accessible web interfaces using <strong>JavaScript, HTML5, CSS3, and Bootstrap</strong>.</li>
+        <li>Contributed to full-stack web applications integrated with <strong>Laravel</strong> back-ends and <strong>React.js</strong> client interfaces.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item" style="margin-top: 8px;">
+      <div class="item-header">
+        <div>
+          <span class="item-title">Web Developer Intern</span>
+          <span class="item-subtitle"> &bull; BPJS Kesehatan</span>
+        </div>
+        <div class="item-date">Jayapura, Indonesia</div>
+      </div>
+      <ul class="bullet-list">
+        <li>Contributed to front-end and back-end maintenance of healthcare information portal features using <strong>PHP (CodeIgniter)</strong> and <strong>Bootstrap</strong>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PAGE BREAK FOR CLEAN 2-PAGE LAYOUT -->
+  <div class="page-break"></div>
+
+  <div class="page-break-header">
+    <span>Gilang Prakoso &mdash; Front-End Developer</span>
+    <span>gilangprakoso37@gmail.com &bull; +62 822-2716-9192</span>
+  </div>
+
+  <!-- KEY PROJECTS -->
+  <section class="section">
+    <h2 class="section-title">
+      <svg fill="currentColor" viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
+      Key Featured Projects
+    </h2>
+
+    <div class="project-grid">
+
+      <!-- Project 1 -->
+      <div class="project-card featured">
+        <div>
+          <div class="project-card-header">
+            <h3 class="project-title">Jago Motor (Enterprise CRM)</h3>
+            <span class="project-category">Enterprise</span>
+          </div>
+          <p class="project-desc">
+            A comprehensive, enterprise-grade CRM system designed to handle nationwide vehicle operations, inventory management, customer pipelines, and dealer workflows with micro-frontends.
+          </p>
+        </div>
+        <div class="tech-pill-list">
+          <span class="tech-pill">Angular</span>
+          <span class="tech-pill">TypeScript</span>
+          <span class="tech-pill">Nx</span>
+          <span class="tech-pill">Module Federation</span>
+          <span class="tech-pill">Bootstrap</span>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card featured">
+        <div>
+          <div class="project-card-header">
+            <h3 class="project-title">Jago Motor Customer App</h3>
+            <span class="project-category">Mobile App</span>
+          </div>
+          <p class="project-desc">
+            A cross-platform mobile application enabling customers to seamlessly purchase motorcycles, order spare parts, and schedule workshop maintenance appointments with real-time tracking.
+          </p>
+        </div>
+        <div class="tech-pill-list">
+          <span class="tech-pill">NativeScript</span>
+          <span class="tech-pill">Angular</span>
+          <span class="tech-pill">Firebase</span>
+          <span class="tech-pill">Couchbase</span>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card featured">
+        <div>
+          <div class="project-card-header">
+            <h3 class="project-title">Jago Motor Sales App</h3>
+            <span class="project-category">Mobile CRM</span>
+          </div>
+          <p class="project-desc">
+            A dedicated mobile CRM tool for dealership sales agents to manage client leads, schedule client visits, generate sales orders on the go, and review transaction metrics offline and online.
+          </p>
+        </div>
+        <div class="tech-pill-list">
+          <span class="tech-pill">NativeScript</span>
+          <span class="tech-pill">Angular</span>
+          <span class="tech-pill">TypeScript</span>
+          <span class="tech-pill">Firebase</span>
+          <span class="tech-pill">Couchbase</span>
+        </div>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="project-card featured">
+        <div>
+          <div class="project-card-header">
+            <h3 class="project-title">Jago Motor Driver App</h3>
+            <span class="project-category">Logistics Mobile</span>
+          </div>
+          <p class="project-desc">
+            A logistics application designed to streamline vehicle deliveries, providing drivers with route optimization, live dispatch updates, and delivery status verification via Google Maps.
+          </p>
+        </div>
+        <div class="tech-pill-list">
+          <span class="tech-pill">NativeScript</span>
+          <span class="tech-pill">Angular</span>
+          <span class="tech-pill">Google Maps</span>
+          <span class="tech-pill">Firebase</span>
+        </div>
+      </div>
+
+      <!-- Project 5 -->
+      <div class="project-card">
+        <div>
+          <div class="project-card-header">
+            <h3 class="project-title">React Admin Console</h3>
+            <span class="project-category">Web Platform</span>
+          </div>
+          <p class="project-desc">
+            A customizable administrative console featuring interactive data visualization, role-based user management, activity auditing, and high-speed API data tables.
+          </p>
+        </div>
+        <div class="tech-pill-list">
+          <span class="tech-pill">React</span>
+          <span class="tech-pill">TypeScript</span>
+          <span class="tech-pill">Material UI</span>
+          <span class="tech-pill">Vite</span>
+          <span class="tech-pill">Firebase</span>
+        </div>
+      </div>
+
+      <!-- Project 6 -->
+      <div class="project-card">
+        <div>
+          <div class="project-card-header">
+            <h3 class="project-title">Mobile Merchant App</h3>
+            <span class="project-category">Mobile Platform</span>
+          </div>
+          <p class="project-desc">
+            A mobile business management solution enabling registered merchants to track point-of-sale transactions, analyze sales charts, and manage storefront inventories.
+          </p>
+        </div>
+        <div class="tech-pill-list">
+          <span class="tech-pill">NativeScript</span>
+          <span class="tech-pill">Angular</span>
+          <span class="tech-pill">Tailwind CSS</span>
+          <span class="tech-pill">Firebase</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EDUCATION & ADDITIONAL INFO (TWO COLUMNS) -->
+  <div class="two-col">
+
+    <!-- EDUCATION -->
+    <section class="section">
+      <h2 class="section-title">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+        Education
+      </h2>
+      <div class="timeline-item">
+        <div class="item-title">Bachelor of Informatics Engineering</div>
+        <div class="item-subtitle" style="font-size: 9pt;">Sekolah Tinggi Teknik Atlas Nusantara Malang</div>
+        <div class="item-date" style="margin-top: 2px;">2015 &ndash; 2019 &bull; GPA: 3.37 / 4.00</div>
+        <p style="font-size: 8.5pt; color: #475569; margin-top: 4px; line-height: 1.35;">
+          Focused on Software Engineering, Web Systems, Object-Oriented Architecture, and Distributed Databases.
+        </p>
+      </div>
+    </section>
+
+    <!-- LANGUAGES & ATTRIBUTES -->
+    <section class="section">
+      <h2 class="section-title">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12.87 15.07l-2.54-2.51.03-.03A17.52 17.52 0 0014.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg>
+        Languages & Soft Skills
+      </h2>
+      <div style="font-size: 8.8pt; color: #334155; line-height: 1.45;">
+        <div style="margin-bottom: 6px;">
+          <strong>Languages:</strong>
+          <span style="color: #475569;">Indonesian (Native), English (Intermediate / Professional)</span>
+        </div>
+        <div>
+          <strong>Soft Skills:</strong>
+          <span style="color: #475569;">Technical Leadership, Cross-Functional Collaboration, Problem Solving, Clean Code Mindset, Attention to UX Details.</span>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+</body>
+</html>

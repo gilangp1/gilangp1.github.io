@@ -1,0 +1,125 @@
+<header
+  class="fixed inset-x-0 top-0 z-50
+         border-b border-slate-200/70
+         bg-white/80 backdrop-blur-xl
+         dark:border-slate-800
+         dark:bg-slate-950/80">
+
+  <nav class="container-custom">
+
+    <div
+      class="flex h-16 items-center
+             justify-between">
+
+      <a
+        href="#home"
+        class="text-lg font-bold
+               tracking-tight
+               text-slate-900
+               dark:text-white">
+
+        Gilang<span class="text-indigo-500">.</span>
+
+      </a>
+
+      <div
+        class="hidden items-center gap-6 md:flex">
+
+        @for (
+          item of menuItems;
+          track item.target
+        ) {
+
+          <a
+            [href]="'#' + item.target"
+            class="text-sm font-medium
+                   text-slate-600
+                   transition
+                   hover:text-indigo-500
+                   dark:text-slate-300
+                   dark:hover:text-indigo-400">
+
+            {{ item.label }}
+
+          </a>
+
+        }
+
+        <button
+          type="button"
+          (click)="toggleTheme()"
+          class="rounded-lg
+                 border border-slate-200
+                 p-2
+                 hover:bg-slate-100
+                 dark:border-slate-700
+                 dark:hover:bg-slate-800"
+          aria-label="Toggle theme">
+
+          ◐
+
+        </button>
+
+      </div>
+
+      <button
+        type="button"
+        class="md:hidden"
+        (click)="toggleMenu()"
+        aria-label="Toggle mobile menu">
+
+        ☰
+
+      </button>
+
+    </div>
+
+    @if (mobileMenuOpen()) {
+
+      <div
+        class="border-t
+               border-slate-200
+               py-4
+               dark:border-slate-800
+               md:hidden">
+
+        <div class="flex flex-col gap-4">
+
+          @for (
+            item of menuItems;
+            track item.target
+          ) {
+
+            <a
+              [href]="'#' + item.target"
+              (click)="closeMenu()"
+              class="text-sm font-medium
+                     text-slate-600
+                     dark:text-slate-300">
+
+              {{ item.label }}
+
+            </a>
+
+          }
+
+          <button
+            type="button"
+            (click)="toggleTheme()"
+            class="text-left text-sm
+                   font-medium text-slate-600
+                   dark:text-slate-300">
+
+            Toggle Theme
+
+          </button>
+
+        </div>
+
+      </div>
+
+    }
+
+  </nav>
+
+</header>

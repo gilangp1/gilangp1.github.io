@@ -1,12 +1,50 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+
+import {
+  NavbarComponent
+} from './shared/components/navbar/navbar.component';
+
+import {
+  HomeComponent
+} from './features/portfolio/home/home.component';
+
+import {
+  SkillsComponent
+} from './features/portfolio/skills/skills.component';
+
+import {
+  ProjectsComponent
+} from './features/portfolio/projects/projects.component';
+
+import {
+  ExperienceComponent
+} from './features/portfolio/experience/experience.component';
+
+import {
+  EducationComponent
+} from './features/portfolio/education/education.component';
+
+import {
+  ResumeComponent
+} from './features/portfolio/resume/resume.component';
+
+import {
+  ContactComponent
+} from './features/portfolio/contact/contact.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  standalone: true,
+  imports: [
+    NavbarComponent,
+    HomeComponent,
+    SkillsComponent,
+    ProjectsComponent,
+    ExperienceComponent,
+    EducationComponent,
+    ResumeComponent,
+    ContactComponent
+  ],
+  templateUrl: './app.component.html'
 })
-export class AppComponent {
-  title = 'personal-portfolio';
-}
+export class AppComponent {}
