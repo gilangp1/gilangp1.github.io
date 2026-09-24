@@ -1,122 +1,22 @@
-<section
-  id="experience"
-  class="bg-slate-50 py-24
-         dark:bg-slate-900/40">
-
+<section id="experience" class="py-28">
   <div class="container-custom">
-
-    <p
-      class="font-semibold
-             text-indigo-500">
-
-      Experience
-
-    </p>
-
-    <h2
-      class="mt-2 text-4xl font-bold">
-
-      Professional Journey
-
-    </h2>
-
-    <div
-      class="mt-12 max-w-4xl">
-
-      @for (
-        experience of experiences;
-        track experience.company
-      ) {
-
-        <div
-          class="relative
-                 border-l
-                 border-slate-300
-                 pb-12 pl-8
-                 last:pb-0
-                 dark:border-slate-700">
-
-          <div
-            class="absolute -left-2
-                   top-0 h-4 w-4
-                   rounded-full
-                   bg-indigo-600
-                   ring-4
-                   ring-slate-50
-                   dark:ring-slate-900">
-          </div>
-
-          <span
-            class="text-sm font-medium
-                   text-indigo-500">
-
-            {{ experience.startDate }}
-
-            @if (experience.endDate) {
-              - {{ experience.endDate }}
-            } @else {
-              - Present
+    <p class="font-mono text-xs uppercase tracking-[0.16em] text-[#516b25] dark:text-[#b9cf7b]">03 / Experience</p>
+    <h2 class="font-display mt-3 text-4xl font-semibold tracking-[-0.035em] sm:text-5xl">Working closely with people and problems.</h2>
+    <div class="mt-14 max-w-4xl">
+      @for (experience of experiences; track experience.company) {
+        <div class="relative border-l border-[#c8c0b1] pb-14 pl-8 last:pb-0 dark:border-[#506052]">
+          <div class="absolute -left-1.5 top-1 h-3 w-3 bg-[#789343] ring-4 ring-[#f7f3eb] dark:ring-[#17231b]"></div>
+          <span class="font-mono text-xs uppercase tracking-[0.12em] text-[#60772f] dark:text-[#b9cf7b]">{{ experience.startDate }} @if (experience.endDate) { - {{ experience.endDate }} } @else { - Present }</span>
+          <h3 class="font-display mt-3 text-2xl font-semibold tracking-[-0.025em]">{{ experience.position }}</h3>
+          <p class="mt-1 font-medium text-[#394539] dark:text-[#e5eadf]">{{ experience.company }}</p>
+          <p class="mt-4 text-[#657064] dark:text-[#b5beb1]">{{ experience.description }}</p>
+          <ul class="mt-5 space-y-2">
+            @for (responsibility of experience.responsibilities; track responsibility) {
+              <li class="flex gap-2 text-sm text-[#657064] dark:text-[#b5beb1]"><span class="text-[#789343]">↗</span>{{ responsibility }}</li>
             }
-
-          </span>
-
-          <h3
-            class="mt-2 text-xl font-bold">
-
-            {{ experience.position }}
-
-          </h3>
-
-          <p class="mt-1 font-medium">
-
-            {{ experience.company }}
-
-          </p>
-
-          <p
-            class="mt-4
-                   text-slate-600
-                   dark:text-slate-400">
-
-            {{ experience.description }}
-
-          </p>
-
-          <ul
-            class="mt-5 space-y-2">
-
-            @for (
-              responsibility of experience.responsibilities;
-              track responsibility
-            ) {
-
-              <li
-                class="flex gap-2
-                       text-sm
-                       text-slate-600
-                       dark:text-slate-400">
-
-                <span
-                  class="text-indigo-500">
-
-                  ✓
-
-                </span>
-
-                {{ responsibility }}
-
-              </li>
-
-            }
-
           </ul>
-
         </div>
-
       }
-
     </div>
-
   </div>
-
 </section>

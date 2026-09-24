@@ -1,54 +1,14 @@
-<section
-  id="resume"
-  class="py-24">
-
+<section id="resume" class="py-28">
   <div class="container-custom">
-
-    <div
-      class="rounded-3xl
-             bg-indigo-600
-             p-8 text-white
-             sm:p-12
-             lg:p-16">
-
-      <div class="max-w-3xl">
-
-        <h2
-          class="text-3xl font-bold
-                 sm:text-4xl">
-
-          Interested in working together?
-
-        </h2>
-
-        <p
-          class="mt-4 text-indigo-100">
-
-          Download my resume to learn
-          more about my professional
-          experience, skills, and background.
-
-        </p>
-
-        <a
-          [href]="profile.resume"
-          download
-          class="mt-8 inline-flex
-                 rounded-xl bg-white
-                 px-6 py-3
-                 font-semibold
-                 text-indigo-600
-                 transition
-                 hover:-translate-y-1">
-
-          Download Resume
-
-        </a>
-
+    <div class="grid gap-8 border-y border-[#789343] py-10 md:grid-cols-[1.3fr_1fr] md:items-end">
+      <div>
+        <p class="font-mono text-xs uppercase tracking-[0.16em] text-[#60772f] dark:text-[#b9cf7b]">A fuller picture</p>
+        <h2 class="font-display mt-3 max-w-2xl text-4xl font-semibold tracking-[-0.035em] sm:text-5xl">Want the details? They’re all in the CV.</h2>
       </div>
-
+      <div class="md:justify-self-end">
+        <p class="max-w-sm text-sm leading-6 text-[#657064] dark:text-[#b5beb1]">A concise overview of my experience, technical background, and the teams I have worked with.</p>
+        <a [href]="profile.resume" download class="mt-6 inline-flex rounded-full bg-[#1c2820] px-6 py-3 font-semibold text-[#f7f3eb] transition hover:bg-[#516b25] dark:bg-[#b9cf7b] dark:text-[#17231b]">Download CV ↘</a>
+      </div>
     </div>
-
   </div>
-
 </section>

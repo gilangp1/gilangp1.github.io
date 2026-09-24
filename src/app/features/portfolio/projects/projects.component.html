@@ -1,120 +1,26 @@
-<section
-  id="projects"
-  class="py-24">
-
+<section id="projects" class="py-28">
   <div class="container-custom">
-
-    <div class="max-w-2xl">
-
-      <p
-        class="font-semibold
-               text-indigo-500">
-
-        Products & Projects
-
-      </p>
-
-      <h2
-        class="mt-2 text-4xl font-bold">
-
-        Selected Work
-
-      </h2>
-
+    <div class="grid items-end gap-6 md:grid-cols-[1fr_auto]">
+      <div>
+        <p class="font-mono text-xs uppercase tracking-[0.16em] text-[#516b25] dark:text-[#b9cf7b]">01 / Selected work</p>
+        <h2 class="font-display mt-3 text-4xl font-semibold tracking-[-0.035em] sm:text-5xl">Things I’ve helped bring to life.</h2>
+      </div>
+      <p class="max-w-xs text-sm leading-6 text-[#657064] dark:text-[#b5beb1]">A mix of product surfaces, internal tools, and mobile experiences shaped around real work.</p>
     </div>
-
-    <div
-      class="mt-12 grid gap-8
-             lg:grid-cols-3">
-
-      @for (
-        project of projects;
-        track project.title
-      ) {
-
-        <article
-          class="group overflow-hidden
-                 rounded-3xl
-                 border border-slate-200
-                 bg-white
-                 transition
-                 hover:-translate-y-2
-                 hover:shadow-xl
-                 dark:border-slate-800
-                 dark:bg-slate-950">
-
-          <div
-            class="aspect-video
-                   overflow-hidden">
-
-            <img
-              [src]="project.image"
-              [alt]="project.title"
-              class="h-full w-full
-                     object-cover
-                     transition duration-500
-                     group-hover:scale-105">
-
-          </div>
-
-          <div class="p-6">
-
-            <span
-              class="text-sm font-medium
-                     text-indigo-500">
-
-              {{ project.category }}
-
-            </span>
-
-            <h3
-              class="mt-2 text-xl font-bold">
-
-              {{ project.title }}
-
-            </h3>
-
-            <p
-              class="mt-3 text-sm
-                     leading-6
-                     text-slate-600
-                     dark:text-slate-400">
-
-              {{ project.description }}
-
-            </p>
-
-            <div
-              class="mt-5 flex flex-wrap gap-2">
-
-              @for (
-                tech of project.technologies;
-                track tech
-              ) {
-
-                <span
-                  class="rounded-full
-                         bg-slate-100
-                         px-3 py-1
-                         text-xs
-                         dark:bg-slate-800">
-
-                  {{ tech }}
-
-                </span>
-
-              }
-
+    <div class="mt-14 grid gap-x-6 gap-y-10 lg:grid-cols-3">
+      @for (project of projects; track project.title) {
+        <article class="group border-t border-[#c8c0b1] pt-4 transition hover:border-[#789343] dark:border-[#506052]">
+          <div class="aspect-[16/10] overflow-hidden bg-[#e5dfd4]"><img [src]="project.image" [alt]="project.title" class="h-full w-full object-cover transition duration-700 group-hover:scale-[1.025]"></div>
+          <div class="pt-5">
+            <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-[#60772f] dark:text-[#b9cf7b]">{{ project.category }}</span>
+            <h3 class="font-display mt-2 text-2xl font-semibold tracking-[-0.025em]">{{ project.title }}</h3>
+            <p class="mt-3 text-sm leading-6 text-[#657064] dark:text-[#b5beb1]">{{ project.description }}</p>
+            <div class="mt-5 flex flex-wrap gap-x-3 gap-y-1">
+              @for (tech of project.technologies; track tech) { <span class="font-mono text-[11px] text-[#657064] dark:text-[#b5beb1]">{{ tech }} ·</span> }
             </div>
-
           </div>
-
         </article>
-
       }
-
     </div>
-
   </div>
-
 </section>

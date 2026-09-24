@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, signal } from '@angular/core';
+import { Component } from '@angular/core';
 
 import {
   profile
@@ -9,34 +9,17 @@ import {
   standalone: true,
   templateUrl: './home.component.html'
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent {
 
   profile = profile;
 
-  skillIcons = [
-    'devicon-javascript-plain colored',
-    'devicon-typescript-plain colored',
-    'devicon-angularjs-plain colored',
-    'devicon-nextjs-plain',
-    'devicon-php-plain colored',
-    'devicon-git-plain colored',
-    'devicon-vscode-plain colored',
-    'devicon-figma-plain colored'
+  tools = [
+    { name: 'Angular', icon: 'devicon-angularjs-plain' },
+    { name: 'TypeScript', icon: 'devicon-typescript-plain' },
+    { name: 'Next.js', icon: 'devicon-nextjs-plain' },
+    { name: 'JavaScript', icon: 'devicon-javascript-plain' },
+    { name: 'Figma', icon: 'devicon-figma-plain' },
+    { name: 'Git', icon: 'devicon-git-plain' }
   ];
-
-  currentIconIndex = signal(0);
-  private intervalId: any;
-
-  ngOnInit() {
-    this.intervalId = setInterval(() => {
-      this.currentIconIndex.update(i => (i + 1) % this.skillIcons.length);
-    }, 2000);
-  }
-
-  ngOnDestroy() {
-    if (this.intervalId) {
-      clearInterval(this.intervalId);
-    }
-  }
 
 }
