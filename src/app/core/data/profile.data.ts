@@ -9,6 +9,6 @@ export const profile: Profile = {
   email: 'gilangprakoso37@gmail.com',
   github: 'https://github.com/',
   linkedin: 'https://linkedin.com/',
-  resume: '/gilang_prakoso.pdf',
+  resume: '/Gilang_Prakoso_CV.docx',
   image: '/images/profile.jpg'
 };
