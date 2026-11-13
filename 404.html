@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voucher - Jago Motor</title>
+    <meta name="description" content="Lihat detail voucher Anda di aplikasi Jago Motor.">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 420px;
+            width: 100%;
+        }
+
+        .logo-wrapper {
+            margin-bottom: 32px;
+        }
+
+        .logo-wrapper img {
+            width: 80px;
+            height: 80px;
+            border-radius: 18px;
+        }
+
+        .logo-placeholder {
+            width: 80px;
+            height: 80px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, #e94560, #ff6b6b);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: 700;
+            color: #fff;
+            box-shadow: 0 8px 32px rgba(233, 69, 96, 0.3);
+        }
+
+        h1 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .subtitle {
+            font-size: 15px;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.5;
+            margin-bottom: 40px;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255,255,255,0.15);
+            border-top-color: #e94560;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 24px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .status-text {
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 32px;
+        }
+
+        .btn-playstore {
+            display: none;
+            background: linear-gradient(135deg, #e94560, #c0392b);
+            color: #fff;
+            text-decoration: none;
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 20px rgba(233, 69, 96, 0.4);
+        }
+
+        .btn-playstore:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 28px rgba(233, 69, 96, 0.5);
+        }
+
+        .btn-playstore.visible {
+            display: inline-block;
+        }
+
+        .footer {
+            margin-top: 48px;
+            font-size: 12px;
+            color: rgba(255,255,255,0.35);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-wrapper">
+            <div class="logo-placeholder">JM</div>
+        </div>
+
+        <h1>Voucher Jago Motor</h1>
+        <p class="subtitle" id="subtitle">Membuka voucher di aplikasi Jago Motor...</p>
+
+        <div class="spinner" id="spinner"></div>
+        <p class="status-text" id="statusText">Mencoba membuka aplikasi...</p>
+
+        <a id="btnPlaystore"
+           class="btn-playstore"
+           href="https://play.google.com/store/apps/details?id=com.esolution.YMSCustomer">
+            📲 Download di Play Store
+        </a>
+
+        <p class="footer">&copy; Jago Motor</p>
+    </div>
+
+    <script>
+        (function () {
+            var PACKAGE_NAME = 'com.esolution.YMSCustomer';
+            var PLAYSTORE_URL = 'https://play.google.com/store/apps/details?id=' + PACKAGE_NAME;
+            var CUSTOM_SCHEME = 'jmcustomer';
+
+            // Ambil voucher ID dari path URL: /voucher/detail/123
+            var pathParts = window.location.pathname.split('/').filter(Boolean);
+            var voucherId = null;
+            for (var i = 0; i < pathParts.length; i++) {
+                if (pathParts[i] === 'detail' && i + 1 < pathParts.length) {
+                    voucherId = pathParts[i + 1];
+                    break;
+                }
+            }
+
+            var subtitle = document.getElementById('subtitle');
+            var spinner = document.getElementById('spinner');
+            var statusText = document.getElementById('statusText');
+            var btnPlaystore = document.getElementById('btnPlaystore');
+
+            /**
+             * Tampilkan tombol Play Store ketika app tidak ditemukan.
+             */
+            function showPlayStoreButton() {
+                spinner.style.display = 'none';
+                statusText.textContent = 'Aplikasi Jago Motor belum terpasang.';
+                subtitle.textContent = 'Silakan download aplikasi terlebih dahulu untuk melihat voucher.';
+                btnPlaystore.classList.add('visible');
+
+                // Append voucher referrer ke Play Store URL agar setelah install bisa deep link
+                if (voucherId) {
+                    btnPlaystore.href = PLAYSTORE_URL + '&referrer=voucher_' + encodeURIComponent(voucherId);
+                }
+            }
+
+            /**
+             * Deteksi apakah user menggunakan Android.
+             */
+            function isAndroid() {
+                return /android/i.test(navigator.userAgent);
+            }
+
+            /**
+             * Deteksi apakah user menggunakan iOS.
+             */
+            function isIOS() {
+                return /iphone|ipad|ipod/i.test(navigator.userAgent);
+            }
+
+            // ====== MAIN LOGIC ======
+
+            if (isAndroid()) {
+                // Strategi 1: Gunakan Android Intent URL
+                // Ini akan mencoba buka app, jika gagal → langsung ke Play Store
+                var intentPath = voucherId ? '/detail/' + voucherId : '';
+                var intentUrl = 'intent://voucher' + intentPath
+                    + '#Intent'
+                    + ';scheme=' + CUSTOM_SCHEME
+                    + ';package=' + PACKAGE_NAME
+                    + ';S.browser_fallback_url=' + encodeURIComponent(PLAYSTORE_URL)
+                    + ';end';
+
+                // Redirect via intent URL
+                window.location.href = intentUrl;
+
+                // Fallback: jika intent URL tidak di-support oleh browser (jarang),
+                // tampilkan tombol Play Store setelah 2.5 detik
+                setTimeout(function () {
+                    showPlayStoreButton();
+                }, 2500);
+
+            } else if (isIOS()) {
+                // iOS: langsung tunjukkan pesan (app ini hanya Android)
+                spinner.style.display = 'none';
+                statusText.textContent = 'Aplikasi ini hanya tersedia untuk Android.';
+                subtitle.textContent = 'Silakan buka link ini di perangkat Android Anda.';
+
+            } else {
+                // Desktop / lainnya: tampilkan QR atau tombol download
+                spinner.style.display = 'none';
+                statusText.textContent = 'Buka link ini di perangkat Android Anda.';
+                subtitle.textContent = 'Voucher hanya dapat dilihat melalui aplikasi Jago Motor di Android.';
+                btnPlaystore.classList.add('visible');
+                btnPlaystore.textContent = '🖥️ Lihat di Play Store';
+            }
+        })();
+    </script>
+</body>
+</html>
