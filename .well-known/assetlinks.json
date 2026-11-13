@@ -1,0 +1,12 @@
+[
+    {
+        "relation": ["delegate_permission/common.handle_all_urls"],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "com.esolution.YMSCustomer",
+            "sha256_cert_fingerprints": [
+                "5E:10:5C:8E:57:59:8E:76:DE:AA:95:86:60:F1:78:AF:5A:58:C5:FF:21:00:F5:2E:7E:91:51:50:15:1F:2B:C8"
+            ]
+        }
+    }
+]
